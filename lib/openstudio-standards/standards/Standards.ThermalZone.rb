@@ -631,6 +631,7 @@ class Standard
   
   def thermal_zone_get_zone_fuels_for_occ_and_fuel_type(zone)
     zone_fuels = thermal_zone_fossil_or_electric_type(zone, '')
+    OpenStudio::logFree(OpenStudio::Info, "openstudio.Standards.Model", "For #{zone.name}, zone_fuels = #{zone_fuels}.")
     return zone_fuels
   end
 
@@ -700,7 +701,7 @@ class Standard
       end
     end
 
-    # OpenStudio::logFree(OpenStudio::Info, "openstudio.Standards.Model", "For #{self.name}, fuel type = #{fuel_type}.")
+    OpenStudio::logFree(OpenStudio::Info, "openstudio.Standards.Model", "For #{self.name}, fuel type = #{fuel_type}.")
 
     return fuel_type
   end
