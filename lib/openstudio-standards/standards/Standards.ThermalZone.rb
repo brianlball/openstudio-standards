@@ -660,6 +660,7 @@ class Standard
        htg_fuels.include?('Diesel') ||
        htg_fuels.include?('Gasoline') ||
        htg_fuels.include?('DistrictHeating')
+       OpenStudio.logFree(OpenStudio::Info, 'openstudio.Standards.ThermalZone', "For #{thermal_zone.name},  Heating fuels = #{htg_fuels.join(', ')}.")
       fossil = true
     end
 
@@ -681,6 +682,7 @@ class Standard
       fuel_type = 'electric'
     elsif htg_fuels.size.zero? && clg_fuels.size.zero?
       fuel_type = 'unconditioned'
+      OpenStudio.logFree(OpenStudio::Warn, 'openstudio.Standards.ThermalZone', "For #{thermal_zone.name}, UNCONDITIONED")
     else
       OpenStudio.logFree(OpenStudio::Warn, 'openstudio.Standards.ThermalZone', "For #{thermal_zone.name}, could not determine fuel type, assuming fossil.  Heating fuels = #{htg_fuels.join(', ')}; cooling fuels = #{clg_fuels.join(', ')}.")
       fuel_type = 'fossil'
@@ -701,7 +703,7 @@ class Standard
       end
     end
 
-    OpenStudio::logFree(OpenStudio::Info, "openstudio.Standards.Model", "For #{self.name}, fuel type = #{fuel_type}.")
+    OpenStudio::logFree(OpenStudio::Info, "openstudio.Standards.Model", "For #{thermal_zone.name}, fuel type = #{fuel_type}.")
 
     return fuel_type
   end
