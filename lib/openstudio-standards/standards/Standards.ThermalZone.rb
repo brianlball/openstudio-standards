@@ -628,6 +628,7 @@ class Standard
   # for 2013 and prior, baseline fuel = proposed fuel
   # @param themal_zone
   # @return [string] with applicable DistrictHeating and/or DistrictCooling
+  
   def thermal_zone_get_zone_fuels_for_occ_and_fuel_type(zone)
     zone_fuels = thermal_zone_fossil_or_electric_type(zone, '')
     return zone_fuels
